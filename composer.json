@@ -1,0 +1,14 @@
+{
+    "name": "brenno/trains",
+    "description": "",
+    "authors": [
+        {
+            "name": "brennomatheus",
+            "email": "brenno_silva_@hotmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    }
+}
