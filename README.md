@@ -48,6 +48,8 @@ Para executar o programa
 
   - insira um caso de teste
 
+  para rodar os testes automatizados (depois de rodar o comando "composer install")
+  - ./vendor/bin/phpunit ./tests
 
 CASOS DE TESTE
 
