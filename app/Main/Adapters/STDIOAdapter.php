@@ -26,6 +26,7 @@ class STDIOAdapter
                 foreach ($response->getBody() as $key => $value) {
                     $key = ++$key;
                     $value = $value ?? 'NO SOUCH ROUTE';
+                    $value = $value === 999999 ? 'NO SOUCH ROUTE' : $value;
                     echo "Output #$key: $value\n";
                 }
             else

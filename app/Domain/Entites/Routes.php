@@ -155,15 +155,18 @@ class Routes
 
             unset($unvisited[$near]);
 
-            foreach ($this->towns[$near]->getRoutes() as $route) {
-                $total_distance = $distance[$near] + $route->getDistance();
+            $routes = $this->towns[$near]->getRoutes();
 
-                if ($total_distance < $distance[$route->getDestinationTown()])
-                    $distance[$route->getDestinationTown()] = $total_distance;
+            if ($routes) {
+                foreach ($routes as $route) {
+                    $total_distance = $distance[$near] + $route->getDistance();
+
+                    if ($total_distance < $distance[$route->getDestinationTown()])
+                        $distance[$route->getDestinationTown()] = $total_distance;
+                }
             }
 
-            if ($near == $end)
-                return $distance[$end];
+            if ($near === $end) return $distance[$end];
         }
 
         return null;
@@ -179,13 +182,13 @@ class Routes
         return array_search(min($tmp), $tmp);
     }
 
-    public function getLengthOfShortestRoute(string $start, string $end): int
+    public function getLengthOfShortestRoute(string $start, string $end): ?int
     {
         $result = [];
         $visited = [];
         $this->searchRoutes($start, $end, 0, 0, $result, $visited);
 
-        return min($result);
+        return !$result ? null : min($result);
     }
 
     private function searchRoutes(string $start, string $end, int $length, int $stops, array &$trips, array $visited): void
