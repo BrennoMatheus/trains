@@ -38,7 +38,9 @@ class Routes
             $start = substr($input, 0, 1);
             $end = substr($input, 1, 1);
             $distance = substr($input, 2);
-            $this->towns[$start]->addRoute(new Route($end, $distance));
+
+            if (!$this->towns[$start]->findRouteByDestination($end))
+                $this->towns[$start]->addRoute(new Route($end, $distance));
         }
 
         return $this;
