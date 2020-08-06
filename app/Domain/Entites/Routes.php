@@ -80,6 +80,8 @@ class Routes
 
         $adjacent_routes  = $this->towns[$start]->getRoutes();
 
+        if (!$adjacent_routes) return;
+
         foreach ($adjacent_routes as $townName => $route) {
             $nextStop = $stops + 1;
             $this->searchRoutesWithMaxStops($townName, $end,  $max, $nextStop, $trips);
@@ -101,6 +103,8 @@ class Routes
             $trips++;
 
         $adjacent_routes  = $this->towns[$start]->getRoutes();
+
+        if (!$adjacent_routes) return;
 
         foreach ($adjacent_routes as $townName => $route) {
 
@@ -130,6 +134,8 @@ class Routes
         if ($stops === $number_of_stops) return;
 
         $adjacent_routes  = $this->towns[$start]->getRoutes();
+
+        if (!$adjacent_routes) return;
 
         foreach ($adjacent_routes as $townName => $route) {
             $nextStop = $stops + 1;
@@ -190,6 +196,8 @@ class Routes
         }
 
         $adjacent_routes  = $this->towns[$start]->getRoutes();
+
+        if (!$adjacent_routes) return;
 
         foreach ($adjacent_routes as $townName => $route) {
             if (!array_search($townName, $visited) or $townName === $end) {

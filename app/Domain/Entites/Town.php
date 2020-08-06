@@ -33,7 +33,7 @@ class Town
         return isset($this->routes[$destination]) ? $this->routes[$destination] : null;
     }
 
-    public function getRoutes(): array
+    public function getRoutes(): ?array
     {
         return $this->routes;
     }
